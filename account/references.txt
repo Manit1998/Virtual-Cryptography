@@ -1,0 +1,6 @@
+https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html
+https://github.com/tesseract-ocr/tesseract/wiki/ImproveQuality
+https://www.topocr.com/noise.html
+https://docs.opencv.org/3.1.0/d4/d13/tutorial_py_filtering.html
+https://www.tutorialkart.com/opencv/python/opencv-python-gaussian-image-smoothing/
+https://haptik.ai/tech/putting-text-on-image-using-python/
