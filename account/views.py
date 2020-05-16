@@ -152,35 +152,34 @@ def init(username):
 
 # init("monty@123")
 
+
+	
+
 @csrf_exempt
 def signup(request):
-
-	#handling post request
 	if request.method == 'GET':
 		dat={}
 		return render(request, "signup.html", dat)
-	try:
-		print("hello")
-		username=request.POST.get("username")
-		print(username)
-		init(username)
-		encrypt(username)
-		image = Image.open('share/share1.png')
+	
+	if request.method == 'POST':
+		try:
+			print("hello")
+			username=request.POST.get("username")
+			print(username)
+			init(username)
+			encrypt(username)
+			image = Image.open('share/share1.png')
+			msg="Sign Up Successfully"
+			messages.success(request,"Sign Up Successfully")
+			response = HttpResponse(content_type='image/png')
+			response['Content-Disposition'] = 'attachment; filename=share1.png'
+			
+			image.save(response,'png')
+			os.remove("share/share1.png")
+			return response
 		
-		response = HttpResponse(content_type='image/png')
-		# messages.success(request,"Sign Up successfully")
-		response['Content-Disposition'] = 'attachment; filename=share1.png'
-		
-		image.save(response,'png')
-		# response['Location']='/account/signup/'
-		
-		os.remove("share/share1.png")
-		
-		return response
-		
-	except Exception as e:
-	# logging.getLogger("error_logger").error("Unable to upload file. "+repr(e))
-		messages.error(request,"Unable to upload file. "+repr(e))
+		except Exception as e:
+			messages.error(request,"Unable to upload file. "+repr(e))
 	return HttpResponseRedirect("/account/signup/")
 	
 
